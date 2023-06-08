@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ng-sample-app-deploy
+  labels:
+    name: ng-sample-app-deploy
+    app: sample-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      name: ng-sample-app-pod
+      app: sample-app
+    
+  template:
+    metadata:
+      name: ng-sample-app-pod
+      labels:
+        name: ng-sample-app-pod
+        app: sample-app
+    spec:
+      containers:
+        - name: sample-app
+          image: vivekanandpv/ng-sample-app
+          ports:
+            - containerPort: 80
