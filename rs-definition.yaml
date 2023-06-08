@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: ReplicaSet
+metadata:
+  name: demo-rs
+  labels:
+    app: demo-app
+    type: backend-app
+spec:
+  selector:
+    matchLabels:
+      type: front-end
+  template:
+    metadata:
+      name: demo-pod
+      labels:
+        app: demo-app
+        type: front-end
+    spec:
+      containers:
+        - name: nginx-container
+          image: nginx
+          env:
+            - name: FOO
+              value: foo@value
+            - name: BAR
+              value: bar_value
+  replicas: 4

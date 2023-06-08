@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demo-pod
+  labels:
+    app: demo-app
+    type: front-end
+spec:
+  containers:
+    - name: nginx-container
+      image: nginx
+      env:
+        - name: FOO
+          value: foo@value
+        - name: BAR
+          value: bar_value
